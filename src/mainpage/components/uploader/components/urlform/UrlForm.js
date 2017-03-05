@@ -24,10 +24,13 @@ class UrlForm extends React.Component {
                         <Field name='url'
                             component='input'
                             type='text'
+                            style={{width:'500px'}}
                         />
                     </div>
                     <div>
-                        <button className={this.updateButtonClassName()}
+                        <button className={this.updateButtonClassName()} style={{width: '100%',
+  height: '50px',
+  background: 'green',}}
                             type='submit' onClick={() => {
                                 this.props.submit(this.updateButtonClassName());
                             }} disabled={this.props.passedProps.uploadStatus === 'UPLOADING'}
@@ -42,7 +45,7 @@ class UrlForm extends React.Component {
         );
     }
 }
-    
+
 
 UrlForm = reduxForm({
      form: 'urlForm'

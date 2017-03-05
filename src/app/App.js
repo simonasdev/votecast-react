@@ -13,7 +13,7 @@ class App extends React.Component {
         if (activePage === undefined || activePage === '') {
             activePage = 'PAGE_LANDING';
         }
-        //activePage = 'PAGE_MAIN'; // DEV
+        activePage = 'PAGE_MAIN'; // DEV
         switch (activePage) {
             case 'PAGE_LANDING': {
                 return (

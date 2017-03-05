@@ -6,7 +6,7 @@ import { UrlForm } from './components';
 
 
 const initFormValues = {
-    url: ''
+    url: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'
 };
 
 class Uploader extends React.Component {
@@ -26,7 +26,7 @@ class Uploader extends React.Component {
     render () {
         return (
             <div>
-                <UrlForm 
+                <UrlForm
                     onSubmit={this.onSubmitButtonClick}
                     initialValues={initFormValues}
                     passedProps={{

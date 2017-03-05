@@ -1,46 +1,29 @@
-const mockSongList = [
-    {
-        name: 'Eminem - Slim shady',
-        url: 'http://Muhahaha.com/eminem',
-        lenght: 222,
-        votes: 0,
-        playing: true,
-        playPercentage: 25
-    },{
-        name: 'Rakade - Bitte Bitte',
-        url: 'http://Muhahaha.com/rakede',
-        lenght: 500,
-        votes: 0
-    },{
-        name: 'Chase and Status',
-        url: 'http://Muhahaha.com/chase',
-        lenght: 802,
-        votes: 0
-    }
-];
-
 export const getSongs = () => {
     return (dispatch) => {
-        let fullSongList = mockSongList;
-        let playingSong = fullSongList.filter((value) => {
-            if (value.playing === true) {
-                return value;
-            }
-        });
-        let upcomingSongList = fullSongList.filter((value) => {
-            if (value.playing !== true) {
-                return value;
-            }
-        });
-        dispatch({
-            type: 'PLAYING_SONG',
-            data: playingSong
-        });
+        fetch(`${process.env.REACT_APP_API}/streams`, {mode: 'no-cors'}).then(function (r) { return r.json() }).then(function (j) {
+            let fullSongList = j;
+            let playingSong = fullSongList.filter((value) => {
+                if (value.playing === true) {
+                    return value;
+                }
+            });
+            let upcomingSongList = fullSongList.filter((value) => {
+                if (value.playing !== true) {
+                    return value;
+                }
+            });
+            dispatch({
+                type: 'PLAYING_SONG',
+                data: playingSong
+            });
 
-        dispatch({
-            type: 'UPCOMING_SONG_LIST',
-            data: upcomingSongList
-        });
+            dispatch({
+                type: 'UPCOMING_SONG_LIST',
+                data: upcomingSongList
+            });
+        })
+
+
     };
 };
 
@@ -80,7 +63,7 @@ export const downVote = (data) => {
                     type: 'DOWNVOTED_SUCCESSFULLY',
                     data: ''
                 });
-        }, 800); 
+        }, 800);
     };
 };
 
@@ -120,6 +103,6 @@ export const upVote = (data) => {
                     type: 'UPVOTED_SUCCESSFULLY',
                     data: ''
                 });
-        }, 800); 
+        }, 800);
     };
 };
