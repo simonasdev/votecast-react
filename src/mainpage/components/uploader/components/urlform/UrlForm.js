@@ -28,9 +28,7 @@ class UrlForm extends React.Component {
                         />
                     </div>
                     <div>
-                        <button className={this.updateButtonClassName()} style={{width: '100%',
-  height: '50px',
-  background: 'green',}}
+                        <button className={this.updateButtonClassName()} style={{width: '100%', height: '50px', background: 'green'}}
                             type='submit' onClick={() => {
                                 this.props.submit(this.updateButtonClassName());
                             }} disabled={this.props.passedProps.uploadStatus === 'UPLOADING'}
